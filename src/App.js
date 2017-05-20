@@ -11,12 +11,13 @@ import Home from "./containers/Home";
 import NotFound from "./components/NotFound";
 import Register from "./containers/Register";
 import ForgottenPassword from "./containers/ForgottenPassword";
-import Confirm from "./containers/Confirm";
+import ConfirmForgottenPassword from "./containers/ConfirmForgottenPassword";
 import ChangePassword from "./containers/ChangePassword";
 import Settings from "./containers/Settings";
 import Search from "./containers/Search";
 import CurrencyDetails from "./containers/CurrencyDetails";
 import Currencies from "./containers/Currencies";
+import ActivateAccount from "./containers/ActivateAccount";
 import PrivateRoute from "./containers/PrivateRoute";
 
 class App extends React.Component {
@@ -27,8 +28,9 @@ class App extends React.Component {
                     {/* Unauthenticated routes */}
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/register" component={Register}/>
+                    <Route exact path="/register/activate" component={ActivateAccount}/>
                     <Route exact path="/forgotten-password" component={ForgottenPassword}/>
-                    <Route exact path="/confirm" component={Confirm}/>
+                    <Route exact path="/forgotten-password/confirm" component={ConfirmForgottenPassword}/>
                     <Route exact path="/change-password" component={ChangePassword}/>
 
                     {/*Authenticated routes*/}

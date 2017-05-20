@@ -6,12 +6,12 @@
  */
 import React from "react";
 
-class Confirm extends React.Component {
+class ConfirmForgottenPassword extends React.Component {
     render() {
         return (
-            <div>Confirm</div>
+            <div>Confirm Forgotten Password</div>
         );
     }
 }
 
-export default Confirm;
+export default ConfirmForgottenPassword;
