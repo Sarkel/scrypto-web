@@ -1,0 +1,43 @@
+.cover-image {
+    background-image: url("https://cdn.scrypto.pl/background.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    height: 100vh;
+}
+
+.flex-on {
+    display: flex;
+}
+
+.center-self-horizontal {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center-self {
+    margin: auto;
+}
+
+.center-self-vertical {
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.background-image-content {
+    max-height: 600px;
+    min-height: 200px;
+    background-color: #FFFFFF;
+}
+
+.background-image-content .background-image-content__header {
+    height: 52px;
+    background-color: #4285f4;
+    color: #FFFFFF;
+    text-align: left;
+    padding: 10px;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,12 @@
+.base-input {
+    border-radius: 0 !important;
+    color: #000000;
+}
+
+.base-input:focus {
+    border: 1px solid #000000;
+}
+
+.base-input-label {
+    color: #000000;
+}
