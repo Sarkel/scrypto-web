@@ -9,9 +9,9 @@ import BackgroundImage from "../components/BackgroundImage";
 import InputEmail from "../components/InputEmail";
 import PasswordInput from "../components/PasswordInput";
 import SubmitButton from "../components/SubmitButton";
-import {Link} from "react-router-dom";
 import InputText from "../components/InputText";
 import ConfirmPasswordInput from "../components/ConfirmPasswordInput";
+import NavigationRow from "../components/NavigationRow";
 
 class Register extends React.Component {
     state = {
@@ -109,14 +109,12 @@ class Register extends React.Component {
                             disabled={this.validate()}
                         />
                     </form>
-                    <div className="row">
-                        <div className="col-8">
-                            <Link to="/forgotten-password" className="btn btn-link">Did you forgot your password?</Link>
-                        </div>
-                        <div className="col-4">
-                            <Link to="/login" className="btn btn-link">Sign in</Link>
-                        </div>
-                    </div>
+                    <NavigationRow
+                        leftLink="/forgotten-password"
+                        leftName="Did you forgot your password?"
+                        rightLink="/login"
+                        rightName="Sign in"
+                    />
                 </div>
             </BackgroundImage>
         );

@@ -49,7 +49,6 @@ class BaseInput extends React.Component {
     }
 
     handleChange(event) {
-        debugger;
         this.processChange(event);
     }
 

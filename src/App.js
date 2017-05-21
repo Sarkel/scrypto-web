@@ -19,30 +19,42 @@ import CurrencyDetails from "./containers/CurrencyDetails";
 import Currencies from "./containers/Currencies";
 import ActivateAccount from "./containers/ActivateAccount";
 import PrivateRoute from "./containers/PrivateRoute";
+import configureStore from "./store";
+import {Provider} from "react-redux";
+import Spinner from "./containers/Spinner";
+import Error from "./containers/Error";
+
+const store = configureStore();
 
 class App extends React.Component {
     render() {
         return (
-            <HashRouter hashType="slash">
-                <Switch>
-                    {/* Unauthenticated routes */}
-                    <Route exact path="/login" component={Login}/>
-                    <Route exact path="/register" component={Register}/>
-                    <Route exact path="/register/activate" component={ActivateAccount}/>
-                    <Route exact path="/forgotten-password" component={ForgottenPassword}/>
-                    <Route exact path="/forgotten-password/confirm" component={ConfirmForgottenPassword}/>
-                    <Route exact path="/change-password" component={ChangePassword}/>
+            <Provider store={store}>
+                <HashRouter hashType="slash">
+                    <div>
+                        <Switch>
+                            {/* Unauthenticated routes */}
+                            <Route exact path="/login" component={Login}/>
+                            <Route exact path="/register" component={Register}/>
+                            <Route exact path="/register/activate" component={ActivateAccount}/>
+                            <Route exact path="/forgotten-password" component={ForgottenPassword}/>
+                            <Route exact path="/forgotten-password/confirm" component={ConfirmForgottenPassword}/>
+                            <Route exact path="/change-password" component={ChangePassword}/>
 
-                    {/*Authenticated routes*/}
-                    <PrivateRoute exact path="/" component={Home}/>
-                    <PrivateRoute exact path="/currencies/:name" component={Currencies}/>
-                    <PrivateRoute exact path="/currency/:name" component={CurrencyDetails}/>
-                    <PrivateRoute exact path="/settings" component={Settings}/>
-                    <PrivateRoute exact path="/search" component={Search}/>
-                    {/*Route not found*/}
-                    <Route component={NotFound}/>
-                </Switch>
-            </HashRouter>
+                            {/*Authenticated routes*/}
+                            <PrivateRoute exact path="/" component={Home}/>
+                            <PrivateRoute exact path="/currencies/:name" component={Currencies}/>
+                            <PrivateRoute exact path="/currency/:name" component={CurrencyDetails}/>
+                            <PrivateRoute exact path="/settings" component={Settings}/>
+                            <PrivateRoute exact path="/search" component={Search}/>
+                            {/*Route not found*/}
+                            <Route component={NotFound}/>
+                        </Switch>
+                        <Spinner/>
+                        <Error/>
+                    </div>
+                </HashRouter>
+            </Provider>
         );
     }
 }

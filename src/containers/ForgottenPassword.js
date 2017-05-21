@@ -8,7 +8,7 @@ import React from "react";
 import BackgroundImage from "../components/BackgroundImage";
 import InputEmail from "../components/InputEmail";
 import SubmitButton from "../components/SubmitButton";
-import {Link} from "react-router-dom";
+import NavigationRow from "../components/NavigationRow";
 
 class ForgottenPassword extends React.Component {
     state = {
@@ -47,14 +47,12 @@ class ForgottenPassword extends React.Component {
                         />
                         <SubmitButton name="Sign in" disabled={!this.state.isEmailValid}/>
                     </form>
-                    <div className="row">
-                        <div className="col-6">
-                            <Link to="/register" className="btn btn-link">Sign up</Link>
-                        </div>
-                        <div className="col-6">
-                            <Link to="/login" className="btn btn-link">Sign in</Link>
-                        </div>
-                    </div>
+                    <NavigationRow
+                        leftLink="/register"
+                        leftName="Sign up"
+                        rightLink="/login"
+                        rightName="Sign in"
+                    />
                 </div>
             </BackgroundImage>
         );
