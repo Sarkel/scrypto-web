@@ -37,6 +37,10 @@ class ActivateAccount extends React.Component {
         return (
             <BackgroundImage title="Email verification">
                 <div className="container">
+                    <div>
+                        Email with verification code has been send to your email.
+                        Please use it to validate your email address.
+                    </div>
                     <form onSubmit={this.activateAccount}>
                         <InputNumber
                             name="Code"
