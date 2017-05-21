@@ -16,8 +16,8 @@ class BackgroundImage extends React.Component {
 
     render() {
         return (
-            <section className="container-fluid cover-image flex-on no-gutters">
-                <div className="row align-items-center col-12 center-self">
+            <section className="container-fluid cover-image flex-on no-gutters no-padding">
+                <div className="align-items-center col-12 center-self">
                     <div className="col-md-4 col-sm-12 center-self background-image-content no-padding">
                         <header className="background-image-content__header flex-on">
                             <span className="center-self-vertical">{this.props.title}</span>
