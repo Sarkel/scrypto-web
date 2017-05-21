@@ -5,7 +5,7 @@
  * @Description
  */
 import React from "react";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {HashRouter, Route, Switch} from "react-router-dom";
 import Login from "./containers/Login";
 import Home from "./containers/Home";
 import NotFound from "./components/NotFound";
@@ -23,7 +23,7 @@ import PrivateRoute from "./containers/PrivateRoute";
 class App extends React.Component {
     render() {
         return (
-            <BrowserRouter>
+            <HashRouter>
                 <Switch>
                     {/* Unauthenticated routes */}
                     <Route exact path="/login" component={Login}/>
@@ -42,7 +42,7 @@ class App extends React.Component {
                     {/*Route not found*/}
                     <Route component={NotFound}/>
                 </Switch>
-            </BrowserRouter>
+            </HashRouter>
         );
     }
 }
