@@ -29,7 +29,7 @@ class Login extends React.Component {
     doLogin() {
         sessionStorage.setItem('isLogged', true);
         //todo: do login
-        this.props.history.push('/');
+        this.props.history.replace('/');
     }
 
     handleEmailChange(email, isEmailValid) {
