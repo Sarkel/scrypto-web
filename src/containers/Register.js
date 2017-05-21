@@ -54,7 +54,6 @@ class Register extends React.Component {
     }
 
     handlePasswordChange(password, isPasswordValid) {
-        console.log('Password', password, isPasswordValid);
         this.setState({
             password,
             isPasswordValid
@@ -62,7 +61,6 @@ class Register extends React.Component {
     }
 
     handleConfirmPasswordChange(value, isConfirmPasswordValid) {
-        console.log('Confirm password', value, isConfirmPasswordValid);
         this.setState({
             isConfirmPasswordValid
         })
@@ -78,7 +76,6 @@ class Register extends React.Component {
     }
 
     render() {
-        debugger;
         return (
             <BackgroundImage title="Please sign in">
                 <div className="container">
