@@ -14,11 +14,11 @@ const mapStateToProps = state => {
         isPasswordValid: state.login.isPasswordValid
     };
 };
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         handleEmailChange: (email, isEmailValid) => dispatch(changeEmail(email, isEmailValid)),
         handlePasswordChange: (password, isPasswordValid) => dispatch(changePassword(password, isPasswordValid)),
-        doLogin: () => dispatch(doLogin())
+        doLogin: () => dispatch(doLogin(ownProps))
     };
 };
 
