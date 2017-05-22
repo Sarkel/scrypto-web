@@ -70,7 +70,6 @@ function registrationFailure() {
 function doRegister(props) {
     return async (dispatch, getState) => {
         dispatch(showSpinner());
-        console.log(props);
         try {
             const state = getState();
             await new ApiRequest('/auth/register', MethodOptions.POST, CacheOptions.NO_STORE)
