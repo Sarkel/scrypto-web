@@ -9,12 +9,14 @@ import login from "./login";
 import user from "./user";
 import spinner from "./spinner";
 import error from "./error";
+import register from "./register";
 
 const reducers = combineReducers({
     login,
     user,
     spinner,
-    error
+    error,
+    register
 });
 
 export default reducers;

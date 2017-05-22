@@ -1,0 +1,17 @@
+/**
+ * @Author Sebastian Kubalski
+ * @Email sebastian.kubalski@gmail.com
+ * @Date Creation 22/05/2017
+ * @Description
+ */
+export const CHANGE_REGISTER_EMAIL_VALUE = 'CHANGE_REGISTER_EMAIL_VALUE';
+
+export const CHANGE_REGISTER_PASSWORD_VALUE = 'CHANGE_REGISTER_PASSWORD_VALUE';
+
+export const CHANGE_REGISTER_NAME_VALUE = 'CHANGE_REGISTER_NAME_VALUE';
+
+export const CHANGE_CONFIRM_PASSWORD_VALUE = 'CHANGE_CONFIRM_PASSWORD_VALUE';
+
+export const REGISTER_FAILURE = 'REGISTER_FAILURE';
+
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
