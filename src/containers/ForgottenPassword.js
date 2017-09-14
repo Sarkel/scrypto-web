@@ -1,62 +1,19 @@
-/**
- * @Author Sebastian Kubalski
- * @Email sebastian.kubalski@gmail.com
- * @Date Creation 17/05/2017
- * @Description
- */
-import React from "react";
-import BackgroundImage from "../components/BackgroundImage";
-import InputEmail from "../components/InputEmail";
-import SubmitButton from "../components/SubmitButton";
-import NavigationRow from "../components/NavigationRow";
+import {connect} from "react-redux";
+import {remindPassword, changeEmail} from "../actions/forgotten-password";
+import ForgottenPassword from "../components/ForgottenPassword";
 
-class ForgottenPassword extends React.Component {
-    state = {
-        email: '',
-        isEmailValid: true
-    };
+const mapStateToProps = state => {
+  return {
+    isEmailValid: state.forgottenPassword.isEmailValid
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    handleEmailChange: (email, isEmailValid) => dispatch(changeEmail(email, isEmailValid)),
+    remindPassword: () => dispatch(remindPassword())
+  };
+};
 
-    constructor(props) {
-        super(props);
-        this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.remindPassword = this.remindPassword.bind(this);
-    }
+const ForgottenPasswordContainer = connect(mapStateToProps, mapDispatchToProps)(ForgottenPassword);
 
-    remindPassword() {
-        // todo: logic to remind password
-        this.props.history.push('/forgotten-password/confirm');
-    }
-
-    handleEmailChange(email, isEmailValid) {
-        this.setState({
-            email,
-            isEmailValid
-        });
-    }
-
-    render() {
-        return (
-            <BackgroundImage title="Forgotten Password">
-                <div className="container">
-                    <form onSubmit={this.remindPassword}>
-                        <InputEmail
-                            name="Email"
-                            placeholder="Email"
-                            autoFocu
-                            handleChange={this.handleEmailChange}
-                        />
-                        <SubmitButton name="Sign in" disabled={!this.state.isEmailValid}/>
-                    </form>
-                    <NavigationRow
-                        leftLink="/register"
-                        leftName="Sign up"
-                        rightLink="/login"
-                        rightName="Sign in"
-                    />
-                </div>
-            </BackgroundImage>
-        );
-    }
-}
-
-export default ForgottenPassword;
+export default ForgottenPasswordContainer;

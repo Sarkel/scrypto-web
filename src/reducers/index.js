@@ -12,6 +12,7 @@ import spinner from "./spinner";
 import error from "./error";
 import register from "./register";
 import activateAccount from "./activate-account";
+import forgottenPassword from "./forgotten-password";
 
 const reducers = combineReducers({
     login,
@@ -20,6 +21,7 @@ const reducers = combineReducers({
     error,
     register,
     activateAccount,
+    forgottenPassword,
     router: routerReducer
 });
 

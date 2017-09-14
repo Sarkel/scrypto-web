@@ -1,0 +1,1 @@
+export const CHANGE_EMAIL_VALUE = 'CHANGE_EMAIL_VALUE';
