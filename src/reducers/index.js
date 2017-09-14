@@ -5,7 +5,7 @@
  * @Description
  */
 import {combineReducers} from "redux";
-import {routerReducer} from "react-router-redux";
+import {routerReducer as router} from "react-router-redux";
 import login from "./login";
 import user from "./user";
 import spinner from "./spinner";
@@ -13,6 +13,7 @@ import error from "./error";
 import register from "./register";
 import activateAccount from "./activate-account";
 import forgottenPassword from "./forgotten-password";
+import changePassword from "./change-password";
 
 const reducers = combineReducers({
     login,
@@ -22,7 +23,8 @@ const reducers = combineReducers({
     register,
     activateAccount,
     forgottenPassword,
-    router: routerReducer
+    router,
+    changePassword
 });
 
 export default reducers;

@@ -12,7 +12,6 @@ import Home from "./containers/Home";
 import NotFound from "./components/NotFound";
 import Register from "./containers/Register";
 import ForgottenPassword from "./containers/ForgottenPassword";
-import ConfirmForgottenPassword from "./containers/ConfirmForgottenPassword";
 import ChangePassword from "./containers/ChangePassword";
 import Settings from "./containers/Settings";
 import Search from "./containers/Search";
@@ -42,7 +41,6 @@ class App extends React.Component {
                             <Route exact path="/register" component={Register}/>
                             <Route exact path="/register/activate" component={ActivateAccount}/>
                             <Route exact path="/forgotten-password" component={ForgottenPassword}/>
-                            <Route exact path="/forgotten-password/confirm" component={ConfirmForgottenPassword}/>
                             <Route exact path="/change-password" component={ChangePassword}/>
 
                             {/*Authenticated routes*/}

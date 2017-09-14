@@ -24,7 +24,7 @@ function remindPassword() {
             email: state.forgottenPassword.email
           })
           .call();
-      dispatch(push('/forgotten-password/confirm'));
+      dispatch(push('/change-password'));
     } catch (err) {
       dispatch(showError(err.message));
     }
