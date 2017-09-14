@@ -4,14 +4,9 @@
  * @Date Creation 21/05/2017
  * @Description
  */
-class CacheOptions {
-    static DEFAULT = 'default';
-    static NO_STORE = 'no-store';
-    static RELOAD = 'reload';
-    static NO_CACHE = 'no-cache';
-    static FORCE_CACHE = 'force-cache';
-    static ONLY_IF_CACHED = 'only-if-cached';
-}
+import axios from "axios";
+import {set as setProperty} from "lodash";
+
 
 class MethodOptions {
     static POST = 'POST';
@@ -21,56 +16,48 @@ class MethodOptions {
     static PATCH = 'PATCH';
 }
 
-class CorsOptions {
-    static CORS = 'cors';
-    static SAME_ORIGIN = 'same-origin';
-}
-
 class ApiRequest {
 
     static API_URL = 'https://scrypto-api-dev.herokuapp.com';
     static API_VERSION = 1;
 
-    constructor(uri, method = MethodOptions.GET, cache = CacheOptions.DEFAULT, isCors = true) {
-        this._initHeaders();
-        this._request = new Request(ApiRequest._buildUrl(uri), {
-            method,
-            cache,
-            headers: this._initHeaders(),
-            mode: isCors ? CorsOptions.CORS : CorsOptions.SAME_ORIGIN
-        });
+    constructor(uri, method = MethodOptions.GET,) {
+        this._uri = uri;
+        this._method = method;
+        this._headers = ApiRequest._initHeaders();
     }
 
-    static _buildUrl(uri) {
-        return `${ApiRequest.API_URL}/api/v${ApiRequest.API_VERSION}${uri}`;
+    _buildUrl() {
+        return `${ApiRequest.API_URL}/api/v${ApiRequest.API_VERSION}${this._uri}`;
     }
 
-    _initHeaders() {
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        return headers;
+    static _initHeaders() {
+      return {
+        'Content-Type': 'application/json'
+      }
     }
 
     setToken(token) {
-        this._request.headers.append('Authorization', `Bearer ${token}`);
+        setProperty(this._headers, 'Authorization', `Bearer ${token}`);
         return this;
     }
 
     setBody(body) {
-        this._request.body = body;
+        this._body = body;
         return this;
     }
 
-    async call() {
-        try {
-            const response = await fetch(this._request);
-            const data = await response.json();
-            return data.success ? data.payload : Promise.reject(new Error(data.error_message));
-        } catch (err) {
-            return Promise.reject(err);
-        }
+    call() {
+      return axios({
+        method: this._method,
+        url: this._buildUrl(),
+        responseType: 'json',
+        headers: this._headers,
+        data: this._body,
+        validateStatus: null
+      });
     }
 }
 
 export default ApiRequest;
-export {CacheOptions, MethodOptions};
+export {MethodOptions};

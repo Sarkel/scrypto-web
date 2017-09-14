@@ -5,10 +5,11 @@
  * @Description
  */
 import {CHANGE_EMAIL_VALUE, CHANGE_PASSWORD_VALUE} from "../action-types/login";
-import ApiRequest, {CacheOptions, MethodOptions} from "../helpers/ApiRequest";
+import ApiRequest, {MethodOptions} from "../helpers/ApiRequest";
 import {loginFailure, loginSuccess} from "./user";
 import {hideSpinner, showSpinner} from "./spinner";
 import {showError} from "./error";
+import {push} from "react-router-redux";
 
 function changeEmail(email, isEmailValid) {
     return {
@@ -35,13 +36,14 @@ function doLogin() {
         dispatch(showSpinner());
         try {
             const state = getState();
-            const payload = await new ApiRequest('/auth/login', MethodOptions.POST, CacheOptions.NO_STORE)
+            const payload = await new ApiRequest('/auth/login', MethodOptions.POST)
                 .setBody({
                     email: state.login.email,
                     password: state.login.password
                 })
                 .call();
             dispatch(loginSuccess(payload.user_id, payload.name, payload.token));
+            dispatch(push('/'));
         } catch (err) {
             dispatch(loginFailure());
             dispatch(showError(err.message));

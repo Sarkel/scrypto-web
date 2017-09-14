@@ -11,7 +11,8 @@ import Login from "../components/Login";
 const mapStateToProps = state => {
     return {
         isEmailValid: state.login.isEmailValid,
-        isPasswordValid: state.login.isPasswordValid
+        isPasswordValid: state.login.isPasswordValid,
+        isValid: state.login.isValid
     };
 };
 const mapDispatchToProps = dispatch => {

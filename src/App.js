@@ -5,7 +5,8 @@
  * @Description
  */
 import React from "react";
-import {HashRouter, Route, Switch} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
+import {ConnectedRouter} from "react-router-redux";
 import Login from "./containers/Login";
 import Home from "./containers/Home";
 import NotFound from "./components/NotFound";
@@ -23,14 +24,17 @@ import configureStore from "./store";
 import {Provider} from "react-redux";
 import Spinner from "./containers/Spinner";
 import Error from "./containers/Error";
+import createHistory from "history/createHashHistory";
 
-const store = configureStore();
+const history = createHistory();
+
+const store = configureStore({history});
 
 class App extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <HashRouter hashType="slash">
+                <ConnectedRouter history={history}>
                     <div>
                         <Switch>
                             {/* Unauthenticated routes */}
@@ -53,7 +57,7 @@ class App extends React.Component {
                         <Spinner/>
                         <Error/>
                     </div>
-                </HashRouter>
+                </ConnectedRouter>
             </Provider>
         );
     }

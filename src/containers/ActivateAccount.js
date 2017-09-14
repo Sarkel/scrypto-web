@@ -1,61 +1,19 @@
-/**
- * @Author Sebastian Kubalski
- * @Email sebastian.kubalski@gmail.com
- * @Date Creation 20/05/2017
- * @Description
- */
-import React from "react";
-import BackgroundImage from "../components/BackgroundImage";
-import InputNumber from "../components/InputNumber";
-import SubmitButton from "../components/SubmitButton";
+import {connect} from "react-redux";
+import {activateAccount, changeActivationCode} from "../actions/activate-account";
+import ActivateAccount from "../components/ActivateAccount";
 
-class ActivateAccount extends React.Component {
-    state = {
-        code: '',
-        isCodeValid: true
-    };
+const mapStateToProps = state => {
+  return {
+    isCodeValid: state.activateAccount.isCodeValid
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    handleCodeChange: (code, isCodeValid) => dispatch(changeActivationCode(code, isCodeValid)),
+    activateAccount: () => dispatch(activateAccount())
+  };
+};
 
-    constructor(props) {
-        super(props);
-        this.activateAccount = this.activateAccount.bind(this);
-        this.handleCodeChange = this.handleCodeChange.bind(this);
-    }
+const ActivateAccountContainer = connect(mapStateToProps, mapDispatchToProps)(ActivateAccount);
 
-    activateAccount() {
-        // todo: add activation logic
-        this.props.history.replace('/login');
-    }
-    
-    handleCodeChange(code, isCodeValid) {
-        this.setState({
-            code,
-            isCodeValid
-        });
-    }
-
-    render() {
-        return (
-            <BackgroundImage title="Email verification">
-                <div className="container">
-                    <div>
-                        Email with verification code has been send to your email.
-                        Please use it to validate your email address.
-                    </div>
-                    <form onSubmit={this.activateAccount}>
-                        <InputNumber
-                            name="Code"
-                            placeholder="Code"
-                            autoFocus
-                            isRequired
-                            handleChange={this.handleCodeChange}
-                            maxLength={4}
-                        />
-                        <SubmitButton name="Activate account" disabled={!this.state.isCodeValid}/>
-                    </form>
-                </div>
-            </BackgroundImage>
-        );
-    }
-}
-
-export default ActivateAccount;
+export default ActivateAccountContainer;

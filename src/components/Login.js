@@ -19,6 +19,7 @@ class Login extends React.Component {
         handlePasswordChange: PropTypes.func.isRequired,
         isEmailValid: PropTypes.bool.isRequired,
         isPasswordValid: PropTypes.bool.isRequired,
+        isValid: PropTypes.bool.isRequired,
         doLogin: PropTypes.func.isRequired
     };
 
@@ -38,8 +39,7 @@ class Login extends React.Component {
                             placeholder="Password"
                             handleChange={this.props.handlePasswordChange}
                         />
-                        <SubmitButton name="Sign in"
-                                      disabled={!(this.props.isEmailValid && this.props.isPasswordValid)}/>
+                        <SubmitButton name="Sign in" disabled={!this.props.isValid}/>
                     </form>
                     <NavigationRow
                         leftLink="/forgotten-password"
